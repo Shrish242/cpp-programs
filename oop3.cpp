@@ -24,10 +24,9 @@ void animal :: setData(string a,string f){
 }
 int main(){
     int leg,lspan;
-    string n;
+    string n , f;
     cout<<"Enter the name of the animal"<<endl;
     cin>>n;
-    string f;
     cout<<"Enter the Favourite Food of "<<n<<endl;
     cin>>f;
     cout<<"How many legs they have "<<endl;
