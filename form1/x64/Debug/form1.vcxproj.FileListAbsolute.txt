@@ -1,0 +1,4 @@
+D:\projects\C++ programs\form1\x64\Debug\form1.vcxproj.AssemblyReference.cache
+D:\projects\C++ programs\form1\x64\Debug\form1.exe
+D:\projects\C++ programs\form1\x64\Debug\form1.MyForm.resources
+D:\projects\C++ programs\form1\x64\Debug\form1.vcxproj.GenerateResource.cache
