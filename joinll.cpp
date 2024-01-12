@@ -12,17 +12,39 @@ class node{
 };
 
 void insert(node* &head1, node* &head2){
-    // node* n= new node(data);
     if (head1 == NULL)
     {
         cout<<"It is empty"<<endl;
     }
-    node* temp = head1;
-    while (temp->next != NULL)
+    if (head2 == NULL)
     {
+        cout<<"It is empty"<<endl;
+    }
+    node* dummy = new node(0); // Provide an argument for the constructor
+    dummy->next= NULL;
+    node* temp = dummy;
+    node* temp1 = head1;
+    node* temp2 = head2;
+    while (temp1->next != NULL && temp2->next != NULL)
+    {
+        if (temp1->data <= temp2->data)
+        {
+            temp->next = temp1;
+            temp1= temp1->next;
+        }
+        else{
+            temp->next = temp2;
+            temp2 = temp2->next;
+        }
         temp = temp->next;
     }
-    temp->next=head2;
+    if (temp1!= NULL)
+    {
+     temp->next=temp1;
+    }
+    else{
+        temp->next = temp2;
+    }
 }
 
 void display(node* head){
@@ -36,13 +58,13 @@ void display(node* head){
 }
 
 int main(){
-    node* head1= new node(2);
-    head1->next = new node(4);
-    head1->next->next = new node(6);
-    head1->next->next->next = new node(8);
+    node* head1= new node(1);
+    head1->next = new node(2);
+    head1->next->next = new node(4);
 
-    node* head2 = new node(7);
-    head2->next = new node(9);
+    node* head2 = new node(1);
+    head2->next = new node(3);
+    head2->next->next = new node(4);
 
     insert(head1 , head2);
     cout<<"Linked list"<<endl;
