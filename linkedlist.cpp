@@ -37,7 +37,7 @@ void insertfirst(node* &head , int val){
 void display(node* head){
     node* temp = head;
     while (temp != NULL)
-    {
+    {`  
         cout<<temp->data<<endl;
         temp=temp->next;
     }

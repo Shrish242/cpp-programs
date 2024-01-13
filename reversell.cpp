@@ -6,6 +6,26 @@ struct node{
     struct node *next;
 };
 
+//1 2 3 4 5 6 7
+
+void reverse(struct node **head) {
+    struct node *current = *head;
+    struct node *previous = NULL;
+    struct node *nextNode = NULL;
+
+    while (current != NULL) {
+        nextNode = current->next; // Save the next node
+        current->next = previous; // Reverse the link
+        previous = current;       // Move to the next pair of nodes
+        current = nextNode;      // Move to the next node
+    }
+
+    // Update the head to point to the new first node
+    *head = previous;
+}
+
+
+
 int traversal(struct node *head){
     struct node *ptr = head;
     while(ptr != NULL){
@@ -14,20 +34,6 @@ int traversal(struct node *head){
     }
     return 0;
 }
-
-int findmid(struct node *head){
-    struct node *p = head;
-    struct node *q = head;
-    while (q->next != NULL)
-    {
-        p = p->next;
-        q= q->next->next;
-    }
-    cout<<p->data;
-    return 0;
-    
-}
-//1 2 3 4 5 6 7 NULL
 
 int main() {
     struct node *head, *first, *second, *third, *fourth, *fifth, *sixth;
@@ -62,7 +68,9 @@ int main() {
 
     cout << "the linked list is : " << endl;
     traversal(head);
-    findmid(head);
+    reverse(&head);
+    cout<<"the reverse list is:"<<endl;
+    traversal(head);
 
     return 0;
 }

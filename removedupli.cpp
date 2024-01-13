@@ -15,19 +15,25 @@ int traversal(struct node *head){
     return 0;
 }
 
-int findmid(struct node *head){
-    struct node *p = head;
-    struct node *q = head;
-    while (q->next != NULL)
+//1 1 2 2 3 3 3
+int dupli(struct node *head){
+    struct node *a = head;
+    struct node *b = head->next;
+    // struct node *c = head->next->next;
+    while (b != NULL)
     {
-        p = p->next;
-        q= q->next->next;
+        if (a->data == b->data)
+        {
+            a->next = b->next;
+        }
+        else{
+            a = a->next;
+        }
+        b = b->next;
     }
-    cout<<p->data;
     return 0;
-    
 }
-//1 2 3 4 5 6 7 NULL
+
 
 int main() {
     struct node *head, *first, *second, *third, *fourth, *fifth, *sixth;
@@ -42,27 +48,29 @@ int main() {
     head->data = 1;
     head->next = first;
 
-    first->data = 2;
+    first->data = 1;
     first->next = second;
 
-    second->data = 3;
+    second->data = 2;
     second->next = third;
 
-    third->data = 4;
+    third->data = 2;
     third->next = fourth;
 
-    fourth->data = 5;
+    fourth->data = 3;
     fourth->next = fifth;
 
-    fifth->data = 6;
+    fifth->data = 3;
     fifth->next = sixth;
 
-    sixth->data = 7;
+    sixth->data = 3;
     sixth->next = NULL;
 
     cout << "the linked list is : " << endl;
     traversal(head);
-    findmid(head);
+    dupli(head);
+    cout<<"New linked list:"<<endl;
+    traversal(head);
 
     return 0;
 }
