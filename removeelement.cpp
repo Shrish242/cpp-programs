@@ -1,79 +1,74 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-struct node
-{
+struct node{
     int data;
     struct node *next;
 };
 
-int traversal(struct node *head)
-{
+int traversal(struct node *head){
     struct node *ptr = head;
-    while (ptr != NULL)
-    {
-        cout << ptr->data << " ";
+    while(ptr != NULL){
+        cout<<ptr->data<<" ";
         ptr = ptr->next;
     }
     return 0;
 }
-// 1 2 2 3 3 3
-int removeele(struct node **head, int val)
-{
-    struct node *a = *head;
+//1 2 2 3 3 3
+// int removeele(struct node **head , int val){
+    
+//     return 0;
+// }
+
+int ifhead(struct node **head , int val){
+    struct node *d = *head;
+    struct node *c = (*head)->next;
+    if (d->data == val )
+    {
+        
+        *head = c;
+        struct node *a = *head;
+    struct node *b = (*head)->next;
     if (a->data == val)
     {
-        *head = (*head)->next;
-        struct node *b = (*head)->next;
-        while (b != NULL)
-        {
-            if (b->data == val)
-            {
-                a->next = b->next;
-            }
-            else
-            {
-                a = a->next;
-            }
-            b = b->next;
-        }
+        *head = b;
     }
-    else{
-        struct node *b = (*head)->next;
-    while (b != NULL)
+    while ( b != NULL)
     {
         if (b->data == val)
         {
             a->next = b->next;
         }
-        else
-        {
-            a = a->next;
+        else{
+            a= a->next;
         }
         b = b->next;
     }
     }
-    
-    return 0;
+    else{
+        struct node *a = *head;
+    struct node *b = (*head)->next;
+    if (a->data == val)
+    {
+        *head = b;
+    }
+    while ( b != NULL)
+    {
+        if (b->data == val)
+        {
+            a->next = b->next;
+        }
+        else{
+            a= a->next;
+        }
+        b = b->next;
+    }
+    }
+    return 0;  
 }
 
-// int ifhead(struct node **head , int val){
-//     struct node *d = *head;
-//     struct node *c = (*head)->next;
-//     if (d->data == val )
-//     {
 
-//         *head = c;
-//         removeele(head , val);
-//     }
-//     else{
-//         removeele( head , val);
-//     }
-//     return 0;
-// }
-
-int main()
-{
+int main() {
     struct node *head, *first, *second, *third, *fourth, *fifth, *sixth;
     head = new node;
     first = new node;
@@ -106,8 +101,8 @@ int main()
 
     cout << "the linked list is : " << endl;
     traversal(head);
-    removeele(&head, 2);
-    cout << "The new is: " << endl;
+    ifhead(&head , 2);
+    cout<<"The new is: "<<endl;
     traversal(head);
 
     return 0;
